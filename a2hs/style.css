@@ -1,3 +1,4 @@
+
 html {
   height: 100%;
   background: black;
@@ -10,7 +11,7 @@ body {
 
 img {
   display: block;
-  width: 100%;
+  width: 50%;
 }
 
 .add-button {
@@ -21,7 +22,13 @@ img {
 
 @media (orientation: landscape) {
   img {
-    height: 100%;
+    height: 50%;
     object-fit: cover;
+  }
+}
+
+@media all and (display-mode: standalone) {
+  body {
+    background-color: yellow;
   }
 }

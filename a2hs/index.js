@@ -26,6 +26,8 @@ const addBtn = document.querySelector('.add-button');
 addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
+
+  console.log('beforeinstallprompt');
   // Prevent Chrome 67 and earlier from automatically showing the prompt
   e.preventDefault();
   // Stash the event so it can be triggered later.
@@ -48,4 +50,18 @@ window.addEventListener('beforeinstallprompt', (e) => {
         deferredPrompt = null;
       });
   });
+});
+
+window.addEventListener('load', () => {
+  if (navigator.standalone) {
+    console.log('Launched: Installed (iOS)');
+  } else if (matchMedia('(display-mode: standalone)').matches) {
+    console.log('Launched: Installed');
+  } else {
+    console.log('Launched: Browser Tab');
+  }
+});
+
+window.addEventListener('appinstalled', (evt) => {
+  console.log('a2hs installed');
 });
